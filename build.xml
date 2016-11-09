@@ -1,0 +1,25 @@
+<project name="loyalty-engine-salesforce" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="lib/ant-salesforce.jar" />        	
+        </classpath>
+    </taskdef>
+	
+
+    <!-- Deploys all code into the Loyalty Engine Production environment -->
+    <target name="deploytotarget">
+      <sf:deploy 
+      	username="${sf.username}" 
+      	password="${sf.password}" 
+      	serverurl="${sf.serverurl}" 
+      	maxPoll="${sf.maxPoll}" 
+      	deployRoot="src"
+      	rollbackOnError="false">
+      </sf:deploy>
+    </target>
+
+</project>
